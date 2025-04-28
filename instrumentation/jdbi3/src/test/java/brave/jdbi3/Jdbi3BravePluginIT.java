@@ -65,6 +65,8 @@ class Jdbi3BravePluginIT {
         assertThat(spanHandler.getSpans())
             .anySatisfy(span -> {
                 assertThat(span.name()).isEqualTo("jdbi.Update");
+                assertThat(span.error()).isNull();
+                assertThat(span.tags()).containsKey("error");
             });
     }
 

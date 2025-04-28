@@ -77,6 +77,10 @@ public class Jdbi3BravePlugin extends JdbiPlugin.Singleton {
 
                         span.tag("sql.rows", Long.toString(ctx.getMappedRows()));
 
+                        if (ctx.getCompletionMoment() == null) {
+                            span.tag("error", "true");
+                        }
+
                         if (ctx.getCompletionMoment() != null) {
                             span.finish(ctx.getCompletionMoment().toEpochMilli() * 1000);
                         } else if (ctx.getExceptionMoment() != null) {

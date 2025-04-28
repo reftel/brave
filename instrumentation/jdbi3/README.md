@@ -9,7 +9,3 @@ with a suitably configured `Jdbi3BRavePlugin`.
 By default, bind variable values are not included in the traces, for security
 reasons. If you want to include them, pass `true` as `includeBindVariables` in
 the `Jdbi3BravePlugin` constructor.
-
-Spans are never marked as error spans, even if JDBC throws an SQL Exception
-when executing a statement, due to a limitation in the mechanism used to
-collect the data.
